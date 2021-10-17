@@ -3,13 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_root"
-    app:startDestination="@+id/dashBoardFragment">
+    app:startDestination="@+id/loginFragment">
 
     <fragment
         android:id="@+id/dashBoardFragment"
         android:name="com.example.kolveniershofapp.AdminDashboard"
         android:label="@string/admin_dashboard"
         tools:layout="@layout/fragment_admindashboard">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.kolveniershofapp.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_LoginFragment_To_AdminFragment"
+            app:destination="@id/dashBoardFragment" />
 
     </fragment>
 
