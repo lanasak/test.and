@@ -32,6 +32,10 @@ class AdminDashboard : Fragment() {
                 v: View -> v.findNavController().navigate(R.id.action_dashBoardFragment_to_clientFragment)
         }
 
+        binding.BusPlanning.setOnClickListener{
+                v: View -> v.findNavController().navigate(R.id.action_dashBoardFragment_to_busPlanning)
+        }
+
         return binding.root
     }
 
