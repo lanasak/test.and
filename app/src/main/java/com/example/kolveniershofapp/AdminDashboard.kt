@@ -28,6 +28,10 @@ class AdminDashboard : Fragment() {
                 v: View -> v.findNavController().navigate(R.id.action_dashBoardFragment_to_calendarFragment)
         }
 
+        binding.Clienten.setOnClickListener{
+                v: View -> v.findNavController().navigate(R.id.action_dashBoardFragment_to_clientFragment)
+        }
+
         return binding.root
     }
 

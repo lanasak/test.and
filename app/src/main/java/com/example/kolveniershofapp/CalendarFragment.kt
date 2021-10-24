@@ -42,7 +42,7 @@ class CalendarFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = inflate(inflater,R.layout.fragment_calendar, container, false)
         calendarItemBinding = inflate(inflater,R.layout.calendar_item, container, false)
-
+        /*
         // set current date to calendar and current month to currentMonth variable
         calendar.time = Date()
         currentMonth = calendar[Calendar.MONTH]
@@ -143,7 +143,7 @@ class CalendarFragment : Fragment() {
         binding.btnLeft.setOnClickListener {
             singleRowCalendar.setDates(getDatesOfPreviousMonth())
         }
-
+        */
         return binding.root
     }
 
