@@ -6,6 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.inflate
+import androidx.navigation.findNavController
+
+import com.example.kolveniershofapp.databinding.FragmentAdmindashboardBinding
+import com.example.kolveniershofapp.databinding.FragmentCalendarBinding
+import com.example.kolveniershofapp.databinding.FragmentLoginBinding
 
 class AdminDashboard : Fragment() {
 
@@ -16,7 +22,13 @@ class AdminDashboard : Fragment() {
         // Inflate the layout for this fragment
         //val binding = DataBindingUtil.bind()
 
-        return inflater.inflate(R.layout.fragment_admindashboard, container, false)
+        val binding: FragmentAdmindashboardBinding = inflate(inflater, R.layout.fragment_admindashboard, container, false)
+
+        binding.DagPlanning.setOnClickListener{
+                v: View -> v.findNavController().navigate(R.id.action_dashBoardFragment_to_calendarFragment)
+        }
+
+        return binding.root
     }
 
 }

@@ -11,6 +11,9 @@
         android:label="@string/admin_dashboard"
         tools:layout="@layout/fragment_admindashboard">
 
+        <action
+            android:id="@+id/action_dashBoardFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
 
     <fragment
@@ -23,5 +26,9 @@
             app:destination="@id/dashBoardFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.kolveniershofapp.CalendarFragment"
+        android:label="CalendarFragment" />
 
 </navigation>
