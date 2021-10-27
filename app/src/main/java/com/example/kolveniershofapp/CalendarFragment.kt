@@ -52,10 +52,9 @@ class CalendarFragment : Fragment() {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             window.statusBarColor = Color.WHITE
         }*/
-
+*/
         // calendar view manager is responsible for our displaying logic
-        val myCalendarViewManager = object :
-            CalendarViewManager {
+        val myCalendarViewManager = object : CalendarViewManager {
             override fun setCalendarViewResourceId(
                 position: Int,
                 date: Date,
@@ -68,7 +67,8 @@ class CalendarFragment : Fragment() {
                 // in this example. monday, wednesday and friday will have special item views and other days
                 // will be using basic item view
                 return if (isSelected){
-                    R.layout.selected_calendar_item
+                    //Todo: add 'selected' layout file
+                    R.layout.calendar_item
                 }
                 else{
                     // here we return items which are not selected
@@ -92,6 +92,7 @@ class CalendarFragment : Fragment() {
 
                 /*holder.itemView.tv_date_calendar_item.text = DateUtils.getDayNumber(date)
                 holder.itemView.tv_day_calendar_item.text = DateUtils.getDay3LettersName(date)*/
+
                 calendarItemBinding.tvDateCalendarItem.text = DateUtils.getDayNumber(date)
                 calendarItemBinding.tvDayCalendarItem.text = DateUtils.getDay3LettersName(date)
 
@@ -100,8 +101,7 @@ class CalendarFragment : Fragment() {
 
 
         // using calendar changes observer we can track changes in calendar
-        val myCalendarChangesObserver = object :
-            CalendarChangesObserver {
+        val myCalendarChangesObserver = object : CalendarChangesObserver {
             // you can override more methods, in this example we need only this one
             override fun whenSelectionChanged(isSelected: Boolean, position: Int, date: Date) {
                 binding.tvDate.text = "${DateUtils.getMonthName(date)}, ${DateUtils.getDayNumber(date)} "
@@ -135,7 +135,7 @@ class CalendarFragment : Fragment() {
             setDates(getFutureDatesOfCurrentMonth())
             init()
         }
-
+        /*
         binding.btnRight.setOnClickListener {
             singleRowCalendar.setDates(getDatesOfNextMonth())
         }
