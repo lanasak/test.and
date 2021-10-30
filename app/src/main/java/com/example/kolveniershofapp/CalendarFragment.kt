@@ -42,7 +42,7 @@ class CalendarFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = inflate(inflater,R.layout.fragment_calendar, container, false)
         calendarItemBinding = inflate(inflater,R.layout.calendar_item, container, false)
-        /*
+
         // set current date to calendar and current month to currentMonth variable
         calendar.time = Date()
         currentMonth = calendar[Calendar.MONTH]
@@ -52,7 +52,8 @@ class CalendarFragment : Fragment() {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             window.statusBarColor = Color.WHITE
         }*/
-*/
+
+
         // calendar view manager is responsible for our displaying logic
         val myCalendarViewManager = object : CalendarViewManager {
             override fun setCalendarViewResourceId(
@@ -68,7 +69,7 @@ class CalendarFragment : Fragment() {
                 // will be using basic item view
                 return if (isSelected){
                     //Todo: add 'selected' layout file
-                    R.layout.calendar_item
+                    R.layout.selected_calendar_item
                 }
                 else{
                     // here we return items which are not selected
@@ -135,15 +136,16 @@ class CalendarFragment : Fragment() {
             setDates(getFutureDatesOfCurrentMonth())
             init()
         }
-        /*
+
         binding.btnRight.setOnClickListener {
-            singleRowCalendar.setDates(getDatesOfNextMonth())
+            binding.mainSingleRowCalendar.setDates(getDatesOfNextMonth())
+            //singleRowCalendar.setDates(getDatesOfNextMonth())
         }
 
         binding.btnLeft.setOnClickListener {
-            singleRowCalendar.setDates(getDatesOfPreviousMonth())
+            binding.mainSingleRowCalendar.setDates(getDatesOfPreviousMonth())
         }
-        */
+
         return binding.root
     }
 
