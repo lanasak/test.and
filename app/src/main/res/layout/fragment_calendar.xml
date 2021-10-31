@@ -10,7 +10,7 @@
 
         <com.michalsvec.singlerowcalendar.calendar.SingleRowCalendar
             android:id="@+id/main_single_row_calendar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -70,12 +70,11 @@
             android:id="@+id/tvActivities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="84dp"
             android:text="Activiteiten"
             android:textColor="#2196F3"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/main_single_row_calendar" />
 
@@ -83,7 +82,7 @@
             android:id="@+id/tvVoormiddag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="32dp"
             android:text="Voormiddag"
             android:textColor="#2196F3"
             android:textSize="16sp"

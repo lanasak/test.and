@@ -42,7 +42,7 @@ class CalendarFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = inflate(inflater,R.layout.fragment_calendar, container, false)
         calendarItemBinding = inflate(inflater,R.layout.calendar_item, container, false)
-        /*
+
         // set current date to calendar and current month to currentMonth variable
         calendar.time = Date()
         currentMonth = calendar[Calendar.MONTH]
@@ -53,9 +53,9 @@ class CalendarFragment : Fragment() {
             window.statusBarColor = Color.WHITE
         }*/
 
+
         // calendar view manager is responsible for our displaying logic
-        val myCalendarViewManager = object :
-            CalendarViewManager {
+        val myCalendarViewManager = object : CalendarViewManager {
             override fun setCalendarViewResourceId(
                 position: Int,
                 date: Date,
@@ -68,6 +68,7 @@ class CalendarFragment : Fragment() {
                 // in this example. monday, wednesday and friday will have special item views and other days
                 // will be using basic item view
                 return if (isSelected){
+                    //Todo: add 'selected' layout file
                     R.layout.selected_calendar_item
                 }
                 else{
@@ -92,6 +93,7 @@ class CalendarFragment : Fragment() {
 
                 /*holder.itemView.tv_date_calendar_item.text = DateUtils.getDayNumber(date)
                 holder.itemView.tv_day_calendar_item.text = DateUtils.getDay3LettersName(date)*/
+
                 calendarItemBinding.tvDateCalendarItem.text = DateUtils.getDayNumber(date)
                 calendarItemBinding.tvDayCalendarItem.text = DateUtils.getDay3LettersName(date)
 
@@ -100,8 +102,7 @@ class CalendarFragment : Fragment() {
 
 
         // using calendar changes observer we can track changes in calendar
-        val myCalendarChangesObserver = object :
-            CalendarChangesObserver {
+        val myCalendarChangesObserver = object : CalendarChangesObserver {
             // you can override more methods, in this example we need only this one
             override fun whenSelectionChanged(isSelected: Boolean, position: Int, date: Date) {
                 binding.tvDate.text = "${DateUtils.getMonthName(date)}, ${DateUtils.getDayNumber(date)} "
@@ -137,13 +138,14 @@ class CalendarFragment : Fragment() {
         }
 
         binding.btnRight.setOnClickListener {
-            singleRowCalendar.setDates(getDatesOfNextMonth())
+            binding.mainSingleRowCalendar.setDates(getDatesOfNextMonth())
+            //singleRowCalendar.setDates(getDatesOfNextMonth())
         }
 
         binding.btnLeft.setOnClickListener {
-            singleRowCalendar.setDates(getDatesOfPreviousMonth())
+            binding.mainSingleRowCalendar.setDates(getDatesOfPreviousMonth())
         }
-        */
+
         return binding.root
     }
 
