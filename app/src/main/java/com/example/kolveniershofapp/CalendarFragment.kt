@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 
 import androidx.databinding.DataBindingUtil.inflate
+import androidx.viewbinding.ViewBindings
 import com.example.kolveniershofapp.databinding.CalendarItemBinding
 import com.example.kolveniershofapp.databinding.FragmentCalendarBinding
 import com.michalsvec.singlerowcalendar.calendar.CalendarChangesObserver
@@ -91,6 +93,7 @@ class CalendarFragment : Fragment() {
                 // good practice is if all views in layout have same IDs in all item views
 
 
+
                 /*holder.itemView.tv_date_calendar_item.text = DateUtils.getDayNumber(date)
                 holder.itemView.tv_day_calendar_item.text = DateUtils.getDay3LettersName(date)*/
 
@@ -105,6 +108,9 @@ class CalendarFragment : Fragment() {
         val myCalendarChangesObserver = object : CalendarChangesObserver {
             // you can override more methods, in this example we need only this one
             override fun whenSelectionChanged(isSelected: Boolean, position: Int, date: Date) {
+                calendarItemBinding.tvDateCalendarItem.text = DateUtils.getDayNumber(date)
+                calendarItemBinding.tvDayCalendarItem.text = DateUtils.getDay3LettersName(date)
+
                 binding.tvDate.text = "${DateUtils.getMonthName(date)}, ${DateUtils.getDayNumber(date)} "
                 binding.tvDay.text = DateUtils.getDayName(date)
                 super.whenSelectionChanged(isSelected, position, date)
@@ -138,12 +144,12 @@ class CalendarFragment : Fragment() {
         }
 
         binding.btnRight.setOnClickListener {
-            binding.mainSingleRowCalendar.setDates(getDatesOfNextMonth())
+            singleRowCalendar.setDates(getDatesOfNextMonth())
             //singleRowCalendar.setDates(getDatesOfNextMonth())
         }
 
         binding.btnLeft.setOnClickListener {
-            binding.mainSingleRowCalendar.setDates(getDatesOfPreviousMonth())
+            singleRowCalendar.setDates(getDatesOfPreviousMonth())
         }
 
         return binding.root

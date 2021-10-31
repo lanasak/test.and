@@ -8,11 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.kolveniershofapp.databinding.FragmentClientBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ClientFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ClientFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

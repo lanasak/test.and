@@ -19,11 +19,11 @@ class AdminDashboard : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //val binding = DataBindingUtil.bind()
 
+        //binding aanmaken voor dit fragment
         val binding: FragmentAdmindashboardBinding = inflate(inflater, R.layout.fragment_admindashboard, container, false)
 
+        //on click listeners voor navigatie naar andere fragmenten
         binding.DagPlanning.setOnClickListener{
                 v: View -> v.findNavController().navigate(R.id.action_dashBoardFragment_to_calendarFragment)
         }

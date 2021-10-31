@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     @Override
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         super.onCreateOptionsMenu(menu)
+        //menu aanmaken, moet waarschijnlijk nog aangepast worden naar actionbar
         menuInflater.inflate(R.menu.main_menu,menu)
         return true
     }
