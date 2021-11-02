@@ -22,6 +22,7 @@ class LoginFragment : Fragment() {
 
         val binding:FragmentLoginBinding = inflate(inflater, R.layout.fragment_login, container, false)
 
+        //onclick voor navigatie
         binding.AdminLogin.setOnClickListener{
                 v: View -> v.findNavController().navigate(R.id.action_LoginFragment_To_AdminFragment)
         }

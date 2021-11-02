@@ -6,11 +6,27 @@
     app:startDestination="@+id/loginFragment">
 
     <fragment
+        android:id="@+id/busFragment"
+        android:name="com.example.kolveniershofapp.BusPlannerFragment"
+        android:label="@string/busPlanner"
+        tools:layout="@layout/fragment_bus_planner">
+    </fragment>
+
+    <fragment
         android:id="@+id/dashBoardFragment"
         android:name="com.example.kolveniershofapp.AdminDashboard"
         android:label="@string/admin_dashboard"
         tools:layout="@layout/fragment_admindashboard">
 
+        <action
+            android:id="@+id/action_dashBoardFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_clientFragment"
+            app:destination="@id/clientFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_busPlanning"
+            app:destination="@id/busFragment" />
     </fragment>
 
     <fragment
@@ -23,5 +39,13 @@
             app:destination="@id/dashBoardFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.kolveniershofapp.CalendarFragment"
+        android:label="CalendarFragment" />
+    <fragment
+        android:id="@+id/clientFragment"
+        android:name="com.example.kolveniershofapp.ClientFragment"
+        android:label="ClientFragment" />
 
 </navigation>
