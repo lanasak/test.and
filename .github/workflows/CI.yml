@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
+name: Android CI
 
 # Controls when the workflow will run
 on:
@@ -14,45 +12,60 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
+    
+      # Get files from master branch
       - name: Checkout the code
         uses: actions/checkout@v2
+        
+        # Execute permission for gradlew
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+        
+        #Build the app
       - name: Build the app
         run: ./gradlew build
+        
   unit-test:
     needs: [build]
     name: Run Unit Tests
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v2
+      
       - name: Setup JDK 11
         uses: actions/setup-java@v1
         with:
           java-version: 11
           
+       # Running unit tests
       - name: Unit tests
         run: bash ./gradlew test --stacktrace
 
+       #  Unit test report 
       - name: Upload test report
         uses: actions/upload-artifact@v2
         with:
           name: unit_test_report
           path: app/build/reports/tests/testDebugUnitTest/
+          
   apk:
+  
     needs: [unit-test]
     name: Generate APK
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+      
       - name: set up JDK 11
         uses: actions/setup-java@v1
         with:
           java-version: 11
+          
       - name: Build debug APK
         run: bash ./gradlew assembleDebug --stacktrace
+        
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
