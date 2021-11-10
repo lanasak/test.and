@@ -21,7 +21,8 @@ jobs:
         run: chmod +x gradlew
       - name: Build the app
         run: ./gradlew build
-  test:
+  unit-test:
+    needs: [build]
     name: Run Unit Tests
     runs-on: ubuntu-latest
     steps:
@@ -33,8 +34,14 @@ jobs:
           
       - name: Unit tests
         run: bash ./gradlew test --stacktrace
-        
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit_test_report
+          path: app/build/reports/tests/testDebugUnitTest/
   apk:
+    needs: [unit-test]
     name: Generate APK
     runs-on: ubuntu-latest
 
