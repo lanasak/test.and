@@ -2,7 +2,7 @@ name: Continuous Integration Android
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths-ignore:
       - '.github/**'
       - '**.md'
