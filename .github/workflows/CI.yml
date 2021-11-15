@@ -9,26 +9,9 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    
-      # Get files from master branch
-      - name: Checkout the code
-        uses: actions/checkout@v2
-        
-        # Execute permission for gradlew
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-        
-        #Build the app
-      - name: Build the app
-        run: ./gradlew build
-        
   
   test:
     runs-on: macOS-latest
-    needs: [build]
     steps:
     
     - name: checkout
@@ -37,7 +20,9 @@ jobs:
 
     - name: run tests
       uses: reactivecircus/android-emulator-runner@v2
+
       with:
         api-level: 29
+        run: chmod +x gradlew
         script: ./gradlew connectedCheck       
  
