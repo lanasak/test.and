@@ -1,4 +1,4 @@
-name: Continuous Integration Android 
+name: Continuous Integration Android   
 
 on:
   push:
