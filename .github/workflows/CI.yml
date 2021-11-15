@@ -1,9 +1,11 @@
 name: Continuous Integration Android   
 
 on:
-  push:
-    branches: [ master ]
-
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '.github/**'
+      - '**.md'
 env:
   JAVA_VERSION: 11
   API_LEVEL: 29
