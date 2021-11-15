@@ -28,7 +28,7 @@ jobs:
  
           
   emulator_runner:
-   # needs: [unit-test]
+    needs: [build]
     name: Android Emulator Test
     runs-on: macos-latest
     strategy:
