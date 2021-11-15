@@ -38,19 +38,8 @@ jobs:
         with:
           java-version: 11
           
-       # Running unit tests
-      - name: Unit tests
-        run: bash ./gradlew test --stacktrace
-
-       #  Unit test report 
-      - name: Upload test report
-        uses: actions/upload-artifact@v2
-        with:
-          name: unit_test_report
-          path: app/build/reports/tests/testDebugUnitTest/
-          
   emulator_runner:
-    needs: [unit-test]
+   # needs: [unit-test]
     name: Android Emulator Test
     runs-on: macos-latest
     strategy:
@@ -87,14 +76,14 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
-      - name: run tests
+      - name: run tests     
         uses: reactivecircus/android-emulator-runner@v2
         with:
+          run: chmod +x ./gradlew
           api-level: ${{ matrix.api-level }}
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          run: chmod +x gradlew
           script: ./gradlew connectedCheck
   apk:
   
